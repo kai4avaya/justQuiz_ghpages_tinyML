@@ -434,7 +434,7 @@
     "href": "contents/ai/socratiq.html#tracking-your-progress",
     "title": "🤖 SocratiQ AI",
     "section": "Tracking Your Progress",
-    "text": "Tracking Your Progress\nSocratiQ maintains a comprehensive record of your learning journey. The progress dashboard (Figure 11) displays your quiz performance statistics, learning streaks, and achievement badges. This dashboard updates real-time.\n\n\n\n\n\n\nFigure 11: The progress dashboard showing your learning statistics and achievements.\n\n\n\nAs you continue to engage with the material and complete quizzes, you’ll earn various badges that recognize your progress, as shown in Figure 12.\n\n\n\n\n\n\nFigure 12: Examples of achievement badges you can earn through consistent engagement.\n\n\n\nIf you’d like a record of your progress you can generate a PDF report. It will show your progress, average performance and all the questions you’ve attempted. The PDF is a generated with a unique hash and can be uniquely validated.\n\n\n\n\n\n\nFigure 13: You can click the Download Report button to view your report. You can verify that your PDF has been created by SocratiQ by clicking the verify button and uploading your generated PDF.",
+    "text": "Tracking Your Progress\nSocratiQ maintains a comprehensive record of your learning journey. The progress dashboard (Figure 11) displays your quiz performance statistics, learning streaks, and achievement badges. This dashboard updates real-time.\n\n\n\n\n\n\nFigure 11: The progress dashboard showing your learning statistics and achievements.\n\n\n\nAs you continue to engage with the material and complete quizzes, you’ll earn various badges that recognize your progress, as shown in Figure 12.",
     "crumbs": [
       "🤖 SocratiQ AI"
     ]
@@ -1587,6 +1587,16 @@
     "text": "19.12 Resources\nHere is a curated list of resources to support students and instructors in their learning and teaching journeys. We are continuously working on expanding this collection and will be adding new exercises soon.\n\n\n\n\n\n\nSlides\n\n\n\n\n\nThese slides are a valuable tool for instructors to deliver lectures and for students to review the material at their own pace. We encourage students and instructors to leverage these slides to improve their understanding and facilitate effective knowledge transfer.\n\nTinyML for Social Impact.\n\n\n\n\n\n\n\n\n\n\nVideos\n\n\n\n\n\n\nVideo 19.1\nVideo 19.2\nVideo 19.3\n\n\n\n\n\n\n\n\n\n\nExercises\n\n\n\n\n\n\nExercise 19.1\nExercise 19.2",
     "crumbs": [
       "<span class='chapter-number'>19</span>  <span class='chapter-title'>AI for Good</span>"
+    ]
+  },
+  {
+    "objectID": "contents/ai/socratiq.html#achievement-badges",
+    "href": "contents/ai/socratiq.html#achievement-badges",
+    "title": "🤖 SocratiQ AI",
+    "section": "🏅 Achievement Badges",
+    "text": "🏅 Achievement Badges\nAs you progress through the quizzes, you’ll earn special badges to mark your achievements! Here’s what you can earn:\n\n\n\nBadge\nName\nHow to Earn\n\n\n\n\n🎯\nFirst Steps\nComplete your first quiz\n\n\n🔢\nOn a Streak\nMaintain a streak of perfect scores\n\n\n🏆\nQuiz Medalist\nComplete 10 quizzes\n\n\n🏆🏆\nQuiz Champion\nComplete 20 quizzes\n\n\n🏆🏆🏆\nQuiz Legend\nComplete 30 quizzes\n\n\n🏆🏆🏆🏆 x n\nQuiz AGI Super Human\nComplete 40 or more quizzes\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nKeep taking quizzes to collect all badges and improve your learning journey! Your current badges will appear in the quiz statistics dashboard.\n\n\n\n\n\n\n\n\nFigure 12: Examples of achievement badges you can earn through consistent engagement.\n\n\n\nIf you’d like a record of your progress you can generate a PDF report. It will show your progress, average performance and all the questions you’ve attempted. The PDF is a generated with a unique hash and can be uniquely validated.\n\n\n\n\n\n\nFigure 13: You can click the Download Report button to view your report. You can verify that your PDF has been created by SocratiQ by clicking the verify button and uploading your generated PDF.",
+    "crumbs": [
+      "🤖 SocratiQ AI"
     ]
   }
 ]
