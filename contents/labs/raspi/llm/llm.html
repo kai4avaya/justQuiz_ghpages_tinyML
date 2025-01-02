@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.6.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Systems - Small Language Models (SLM)</title>
+<title>Small Language Models (SLM) – Machine Learning Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -72,12 +72,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-6fbc3b7d0ac83ab8a043646d6c6d94a5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-ebb886636e44b25a2e4e919ac2fea188.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../../site_libs/bootstrap/bootstrap-fb53b6d574e1bdd9fbeb2e351966d872.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../../site_libs/bootstrap/bootstrap-dark-a8b908d16a89b9cdb2975dce3fed7865.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,7 +116,7 @@ gtag('js', new Date());
 gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-M21L0CBCVN"></script>
-<script src="../../../../scripts/ai_menu/dist/bundle.js" defer=""></script>
+<script type="module" src="../../../../scripts/ai_menu/dist/bundle.js" defer=""></script>
 
 
 </head>
@@ -133,17 +136,17 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
     <a href="https://github.com/harvard-edge/cs249r_book" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <a href="../../../../Machine-Learning-Systems.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item quarto-navbar-tools-item" href="https://twitter.com/intent/tweet?url=|url|">
-              <i class="bi bi-bi-twitter pe-1"></i>
+              <i class="bi bi-twitter pe-1"></i>
             Twitter
             </a>
           </li>
           <li>
             <a class="dropdown-item quarto-navbar-tools-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
-              <i class="bi bi-bi-facebook pe-1"></i>
+              <i class="bi bi-facebook pe-1"></i>
             Facebook
             </a>
           </li>
@@ -160,17 +163,20 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../contents/labs/raspi/raspi.html">Raspberry Pi</a></li><li class="breadcrumb-item"><a href="../../../../contents/labs/raspi/llm/llm.html">Small Language Models (SLM)</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
+  <div id="quarto-announcement" data-announcement-id="6615aab77884bf55a802171a73978992" class="alert alert-primary hidden"><i class="bi bi-star-half quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p>⭐ [Oct 18] <b>We Hit 1,000 GitHub Stars</b> 🎉 Thanks to you, Arduino and SEEED donated AI hardware kits for <a href="https://tinyml.seas.harvard.edu/4D/pastEvents">TinyML workshops</a> in developing nations! <br> 🎓 [Nov 15] The <a href="https://www.edgeaifoundation.org/">EDGE AI Foundation</a> is <strong>matching academic scholarship funds</strong> for every new GitHub ⭐ (up to 10,000 stars). <a href="https://github.com/harvard-edge/cs249r_book">Click here to show support!</a> 🙏 <br> 🚀 <b>Our mission. 1 ⭐ = 1 👩‍🎓 Learner</b>. Every star tells a story: learners gaining knowledge and supporters driving the mission. Together, we’re making a difference.</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -184,268 +190,164 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/acknowledgements/acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/about/about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the Book</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/ai/socratiq.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🤖 SocratiQ AI</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/introduction/introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/ml_systems/ml_systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">ML Systems</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/dl_primer/dl_primer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">DL Primer</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/workflow/workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">AI Workflow</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/data_engineering/data_engineering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Engineering</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/frameworks/frameworks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">AI Frameworks</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/training/training.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AI Training</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/efficient_ai/efficient_ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Efficient AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/optimizations/optimizations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Model Optimizations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/hw_acceleration/hw_acceleration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">AI Acceleration</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/benchmarking/benchmarking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Benchmarking AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/ondevice_learning/ondevice_learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">On-Device Learning</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/ops/ops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ML Operations</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/privacy_security/privacy_security.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Security &amp; Privacy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/responsible_ai/responsible_ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Responsible AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/sustainable_ai/sustainable_ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Sustainable AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/robust_ai/robust_ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Robust AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/generative_ai/generative_ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Generative AI</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/ai_for_good/ai_for_good.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">AI for Good</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../contents/core/conclusion/conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">FRONT MATTER</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <a href="../../../../contents/labs/labs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LABS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/dedication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dedication</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/acknowledgements/acknowledgements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Acknowledgements</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/contributors.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contributors &amp; Thanks</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/copyright.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Copyright</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/about.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About the Book</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">MAIN</span></span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Fundamentals</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/introduction/introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/ml_systems/ml_systems.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">ML Systems</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/dl_primer/dl_primer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">DL Primer</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
- <span class="menu-text">Workflow</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/workflow/workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">AI Workflow</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/data_engineering/data_engineering.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data Engineering</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/frameworks/frameworks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">AI Frameworks</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
- <span class="menu-text">Training</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/training/training.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">AI Training</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/efficient_ai/efficient_ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Efficient AI</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/optimizations/optimizations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Model Optimizations</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/hw_acceleration/hw_acceleration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">AI Acceleration</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
- <span class="menu-text">Deployment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/benchmarking/benchmarking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Benchmarking AI</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/ondevice_learning/ondevice_learning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">On-Device Learning</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/ops/ops.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">ML Operations</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
- <span class="menu-text">Advanced Topics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/privacy_security/privacy_security.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Security &amp; Privacy</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/responsible_ai/responsible_ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Responsible AI</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/sustainable_ai/sustainable_ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Sustainable AI</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/robust_ai/robust_ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Robust AI</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/generative_ai/generative_ai.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Generative AI</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true">
- <span class="menu-text">Social Impact</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/ai_for_good/ai_for_good.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">AI for Good</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
- <span class="menu-text">Closing</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/conclusion/conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true">
- <span class="menu-text">LABS</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/labs/labs.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../contents/labs/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
@@ -461,11 +363,11 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../../../../contents/labs/arduino/nicla_vision/nicla_vision.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Nicla Vision</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../contents/labs/arduino/nicla_vision/setup/setup.html" class="sidebar-item-text sidebar-link">
@@ -502,11 +404,11 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../../../../contents/labs/seeed/xiao_esp32s3/xiao_esp32s3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">XIAO ESP32S3</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../contents/labs/seeed/xiao_esp32s3/setup/setup.html" class="sidebar-item-text sidebar-link">
@@ -543,11 +445,11 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../../../../contents/labs/raspi/raspi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Raspberry Pi</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../contents/labs/raspi/setup/setup.html" class="sidebar-item-text sidebar-link">
@@ -578,11 +480,11 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
       <div class="sidebar-item-container"> 
             <a href="../../../../contents/labs/shared/shared.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Shared Labs</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../contents/labs/shared/kws_feature_eng/kws_feature_eng.html" class="sidebar-item-text sidebar-link">
@@ -600,65 +502,17 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">REFERENCES</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/tools.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Tools</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/zoo_datasets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Datasets</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/zoo_models.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Model Zoo</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/learning_resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Resources</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/community.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Communities</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../contents/case_studies.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Case Studies</span></span></a>
   </div>
 </li>
       </ul>
@@ -673,7 +527,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a>
   <ul>
   <li><a href="#raspberry-pi-active-cooler" id="toc-raspberry-pi-active-cooler" class="nav-link" data-scroll-target="#raspberry-pi-active-cooler">Raspberry Pi Active Cooler</a></li>
@@ -743,16 +597,16 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/jpeg/cover.jpg" class="img-fluid figure-img"></p>
+<p><a href="images/jpeg/cover.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="DALL·E prompt - A 1950s-style cartoon illustration showing a Raspberry Pi running a small language model at the edge. The Raspberry Pi is stylized in a retro-futuristic way with rounded edges and chrome accents, connected to playful cartoonish sensors and devices. Speech bubbles are floating around, representing language processing, and the background has a whimsical landscape of interconnected devices with wires and small gadgets, all drawn in a vintage cartoon style. The color palette uses soft pastel colors and bold outlines typical of 1950s cartoons, giving a fun and nostalgic vibe to the scene."><img src="images/jpeg/cover.jpg" class="img-fluid figure-img" alt="DALL·E prompt - A 1950s-style cartoon illustration showing a Raspberry Pi running a small language model at the edge. The Raspberry Pi is stylized in a retro-futuristic way with rounded edges and chrome accents, connected to playful cartoonish sensors and devices. Speech bubbles are floating around, representing language processing, and the background has a whimsical landscape of interconnected devices with wires and small gadgets, all drawn in a vintage cartoon style. The color palette uses soft pastel colors and bold outlines typical of 1950s cartoons, giving a fun and nostalgic vibe to the scene."></a></p>
 <figcaption><em>DALL·E prompt - A 1950s-style cartoon illustration showing a Raspberry Pi running a small language model at the edge. The Raspberry Pi is stylized in a retro-futuristic way with rounded edges and chrome accents, connected to playful cartoonish sensors and devices. Speech bubbles are floating around, representing language processing, and the background has a whimsical landscape of interconnected devices with wires and small gadgets, all drawn in a vintage cartoon style. The color palette uses soft pastel colors and bold outlines typical of 1950s cartoons, giving a fun and nostalgic vibe to the scene.</em></figcaption>
 </figure>
 </div>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <p>In the fast-growing area of artificial intelligence, edge computing presents an opportunity to decentralize capabilities traditionally reserved for powerful, centralized servers. This lab explores the practical integration of small versions of traditional large language models (LLMs) into a Raspberry Pi 5, transforming this edge device into an AI hub capable of real-time, on-site data processing.</p>
 <p>As large language models grow in size and complexity, Small Language Models (SLMs) offer a compelling alternative for edge devices, striking a balance between performance and resource efficiency. By running these models directly on Raspberry Pi, we can create responsive, privacy-preserving applications that operate even in environments with limited or no internet connectivity.</p>
 <p>This lab will guide you through setting up, optimizing, and leveraging SLMs on Raspberry Pi. We will explore the installation and utilization of <a href="https://ollama.com/">Ollama</a>. This open-source framework allows us to run LLMs locally on our machines (our desktops or edge devices such as the Raspberry Pis or NVidia Jetsons). Ollama is designed to be efficient, scalable, and easy to use, making it a good option for deploying AI models such as Microsoft Phi, Google Gemma, Meta Llama, and LLaVa (Multimodal). We will integrate some of those models into projects using Python’s ecosystem, exploring their potential in real-world scenarios (or at least point in this direction).</p>
-<p><img src="images/jpeg/slm-example.jpg" class="img-fluid"></p>
+<p><a href="images/jpeg/slm-example.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/jpeg/slm-example.jpg" class="img-fluid"></a></p>
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
@@ -761,14 +615,14 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <p>For real SSL applications, SSDs are a better option than SD cards.</p>
 </blockquote>
 <p>By the way, as <a href="https://www.hackster.io/aallan">Alasdair Allan</a> discussed, inferencing directly on the Raspberry Pi 5 CPU—with no GPU acceleration—is now on par with the performance of the Coral TPU.</p>
-<p><img src="images/png/bench.png" class="img-fluid"></p>
+<p><a href="images/png/bench.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/png/bench.png" class="img-fluid"></a></p>
 <p>For more info, please see the complete article: <a href="https://www.hackster.io/news/benchmarking-tensorflow-and-tensorflow-lite-on-raspberry-pi-5-b9156d58a6a2?mc_cid=0cab3d08f4&amp;mc_eid=e96256ccba">Benchmarking TensorFlow and TensorFlow Lite on Raspberry Pi 5</a>.</p>
 <section id="raspberry-pi-active-cooler" class="level3">
 <h3 class="anchored" data-anchor-id="raspberry-pi-active-cooler">Raspberry Pi Active Cooler</h3>
 <p>We suggest installing an Active Cooler, a dedicated clip-on cooling solution for Raspberry Pi 5 (Raspi-5), for this lab. It combines an aluminum heatsink with a temperature-controlled blower fan to keep the Raspi-5 operating comfortably under heavy loads, such as running SLMs.</p>
-<p><img src="images/png/cooler.png" class="img-fluid"></p>
+<p><a href="images/png/cooler.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/png/cooler.png" class="img-fluid"></a></p>
 <p>The Active Cooler has pre-applied thermal pads for heat transfer and is mounted directly to the Raspberry Pi 5 board using spring-loaded push pins. The Raspberry Pi firmware actively manages it: at 60°C, the blower’s fan will be turned on; at 67.5°C, the fan speed will be increased; and finally, at 75°C, the fan increases to full speed. The blower’s fan will spin down automatically when the temperature drops below these limits.</p>
-<p><img src="images/png/temp_comp.png" class="img-fluid"></p>
+<p><a href="images/png/temp_comp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/png/temp_comp.png" class="img-fluid"></a></p>
 <blockquote class="blockquote">
 <p>To prevent overheating, all Raspberry Pi boards begin to throttle the processor when the temperature reaches 80°Cand throttle even further when it reaches the maximum temperature of 85°C (more detail <a href="https://www.raspberrypi.com/news/heating-and-cooling-raspberry-pi-5/">here</a>).</p>
 </blockquote>
@@ -782,10 +636,10 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="large-language-models-llms">Large Language Models (LLMs)</h3>
 <p>Large Language Models (LLMs) are advanced artificial intelligence systems that understand, process, and generate human-like text. These models are characterized by their massive scale in terms of the amount of data they are trained on and the number of parameters they contain. Critical aspects of LLMs include:</p>
 <ol type="1">
-<li><p><strong>Size</strong> : LLMs typically contain billions of parameters. For example, GPT-3 has 175 billion parameters, while some newer models exceed a trillion parameters.</p></li>
-<li><p><strong>Training Data</strong> : They are trained on vast amounts of text data, often including books, websites, and other diverse sources, amounting to hundreds of gigabytes or even terabytes of text.</p></li>
-<li><p><strong>Architecture</strong> : Most LLMs use <a href="https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)">transformer-based architectures</a>, which allow them to process and generate text by paying attention to different parts of the input simultaneously.</p></li>
-<li><p><strong>Capabilities</strong> : LLMs can perform a wide range of language tasks without specific fine-tuning, including:</p>
+<li><p><strong>Size</strong>: LLMs typically contain billions of parameters. For example, GPT-3 has 175 billion parameters, while some newer models exceed a trillion parameters.</p></li>
+<li><p><strong>Training Data</strong>: They are trained on vast amounts of text data, often including books, websites, and other diverse sources, amounting to hundreds of gigabytes or even terabytes of text.</p></li>
+<li><p><strong>Architecture</strong>: Most LLMs use <a href="https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)">transformer-based architectures</a>, which allow them to process and generate text by paying attention to different parts of the input simultaneously.</p></li>
+<li><p><strong>Capabilities</strong>: LLMs can perform a wide range of language tasks without specific fine-tuning, including:</p>
 <ul>
 <li>Text generation</li>
 <li>Translation</li>
@@ -794,12 +648,12 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <li>Code generation</li>
 <li>Logical reasoning</li>
 </ul></li>
-<li><p><strong>Few-shot Learning</strong> : They can often understand and perform new tasks with minimal examples or instructions.</p></li>
-<li><p><strong>Resource-Intensive</strong> : Due to their size, LLMs typically require significant computational resources to run, often needing powerful GPUs or TPUs.</p></li>
-<li><p><strong>Continual Development</strong> : The field of LLMs is rapidly evolving, with new models and techniques constantly emerging.</p></li>
-<li><p><strong>Ethical Considerations</strong> : The use of LLMs raises important questions about bias, misinformation, and the environmental impact of training such large models.</p></li>
-<li><p><strong>Applications</strong> : LLMs are used in various fields, including content creation, customer service, research assistance, and software development.</p></li>
-<li><p><strong>Limitations</strong> : Despite their power, LLMs can produce incorrect or biased information and lack true understanding or reasoning capabilities.</p></li>
+<li><p><strong>Few-shot Learning</strong>: They can often understand and perform new tasks with minimal examples or instructions.</p></li>
+<li><p><strong>Resource-Intensive</strong>: Due to their size, LLMs typically require significant computational resources to run, often needing powerful GPUs or TPUs.</p></li>
+<li><p><strong>Continual Development</strong>: The field of LLMs is rapidly evolving, with new models and techniques constantly emerging.</p></li>
+<li><p><strong>Ethical Considerations</strong>: The use of LLMs raises important questions about bias, misinformation, and the environmental impact of training such large models.</p></li>
+<li><p><strong>Applications</strong>: LLMs are used in various fields, including content creation, customer service, research assistance, and software development.</p></li>
+<li><p><strong>Limitations</strong>: Despite their power, LLMs can produce incorrect or biased information and lack true understanding or reasoning capabilities.</p></li>
 </ol>
 <p>We must note that we use large models beyond text, calling them <em>multi-modal models</em>. These models integrate and process information from multiple types of input simultaneously. They are designed to understand and generate content across various forms of data, such as text, images, audio, and video.</p>
 <p>Certainly. Let’s define open and closed models in the context of AI and language models:</p>
@@ -811,7 +665,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <p>Open models are particularly relevant for running models on edge devices like Raspberry Pi as they can be more easily adapted, optimized, and deployed in resource-constrained environments. Still, it is crucial to verify their Licenses. Open models come with various open-source licenses that may affect their use in commercial applications, while closed models have clear, albeit restrictive, terms of service.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/png/llms-slm.png" class="img-fluid figure-img"></p>
+<p><a href="images/png/llms-slm.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Adapted from https://arxiv.org/pdf/2304.13712"><img src="images/png/llms-slm.png" class="img-fluid figure-img" alt="Adapted from https://arxiv.org/pdf/2304.13712"></a></p>
 <figcaption>Adapted from https://arxiv.org/pdf/2304.13712</figcaption>
 </figure>
 </div>
@@ -822,12 +676,12 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <p>SLMs are compact versions of LLMs designed to run efficiently on resource-constrained devices such as smartphones, IoT devices, and single-board computers like the Raspberry Pi. These models are significantly smaller in size and computational requirements than their larger counterparts while still retaining impressive language understanding and generation capabilities.</p>
 <p>Key characteristics of SLMs include:</p>
 <ol type="1">
-<li><p><strong>Reduced parameter count</strong> : Typically ranging from a few hundred million to a few billion parameters, compared to two-digit billions in larger models.</p></li>
-<li><p><strong>Lower memory footprint</strong> : Requiring, at most, a few gigabytes of memory rather than tens or hundreds of gigabytes.</p></li>
-<li><p><strong>Faster inference time</strong> : Can generate responses in milliseconds to seconds on edge devices.</p></li>
-<li><p><strong>Energy efficiency</strong> : Consuming less power, making them suitable for battery-powered devices.</p></li>
-<li><p><strong>Privacy-preserving</strong> : Enabling on-device processing without sending data to cloud servers.</p></li>
-<li><p><strong>Offline functionality</strong> : Operating without an internet connection.</p></li>
+<li><p><strong>Reduced parameter count</strong>: Typically ranging from a few hundred million to a few billion parameters, compared to two-digit billions in larger models.</p></li>
+<li><p><strong>Lower memory footprint</strong>: Requiring, at most, a few gigabytes of memory rather than tens or hundreds of gigabytes.</p></li>
+<li><p><strong>Faster inference time</strong>: Can generate responses in milliseconds to seconds on edge devices.</p></li>
+<li><p><strong>Energy efficiency</strong>: Consuming less power, making them suitable for battery-powered devices.</p></li>
+<li><p><strong>Privacy-preserving</strong>: Enabling on-device processing without sending data to cloud servers.</p></li>
+<li><p><strong>Offline functionality</strong>: Operating without an internet connection.</p></li>
 </ol>
 <p>SLMs achieve their compact size through various techniques such as knowledge distillation, model pruning, and quantization. While they may not match the broad capabilities of larger models, SLMs excel in specific tasks and domains, making them ideal for targeted applications on edge devices.</p>
 <blockquote class="blockquote">
@@ -841,22 +695,22 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="ollama">Ollama</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://ollama.com/public/ollama.png" class="img-fluid figure-img"></p>
+<p><a href="https://ollama.com/public/ollama.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="ollama logo"><img src="https://ollama.com/public/ollama.png" class="img-fluid figure-img" alt="ollama logo"></a></p>
 <figcaption>ollama logo</figcaption>
 </figure>
 </div>
 <p><a href="https://ollama.com/">Ollama</a> is an open-source framework that allows us to run language models (LMs), large or small, locally on our machines. Here are some critical points about Ollama:</p>
 <ol type="1">
-<li><p><strong>Local Model Execution</strong> : Ollama enables running LMs on personal computers or edge devices such as the Raspi-5, eliminating the need for cloud-based API calls.</p></li>
-<li><p><strong>Ease of Use</strong> : It provides a simple command-line interface for downloading, running, and managing different language models.</p></li>
-<li><p><strong>Model Variety</strong> : Ollama supports various LLMs, including Phi, Gemma, Llama, Mistral, and other open-source models.</p></li>
-<li><p><strong>Customization</strong> : Users can create and share custom models tailored to specific needs or domains.</p></li>
-<li><p><strong>Lightweight</strong> : Designed to be efficient and run on consumer-grade hardware.</p></li>
-<li><p><strong>API Integration</strong> : Offers an API that allows integration with other applications and services.</p></li>
-<li><p><strong>Privacy-Focused</strong> : By running models locally, it addresses privacy concerns associated with sending data to external servers.</p></li>
-<li><p><strong>Cross-Platform</strong> : Available for macOS, Windows, and Linux systems (our case, here).</p></li>
-<li><p><strong>Active Development</strong> : Regularly updated with new features and model support.</p></li>
-<li><p><strong>Community-Driven</strong> : Benefits from community contributions and model sharing.</p></li>
+<li><p><strong>Local Model Execution</strong>: Ollama enables running LMs on personal computers or edge devices such as the Raspi-5, eliminating the need for cloud-based API calls.</p></li>
+<li><p><strong>Ease of Use</strong>: It provides a simple command-line interface for downloading, running, and managing different language models.</p></li>
+<li><p><strong>Model Variety</strong>: Ollama supports various LLMs, including Phi, Gemma, Llama, Mistral, and other open-source models.</p></li>
+<li><p><strong>Customization</strong>: Users can create and share custom models tailored to specific needs or domains.</p></li>
+<li><p><strong>Lightweight</strong>: Designed to be efficient and run on consumer-grade hardware.</p></li>
+<li><p><strong>API Integration</strong>: Offers an API that allows integration with other applications and services.</p></li>
+<li><p><strong>Privacy-Focused</strong>: By running models locally, it addresses privacy concerns associated with sending data to external servers.</p></li>
+<li><p><strong>Cross-Platform</strong>: Available for macOS, Windows, and Linux systems (our case, here).</p></li>
+<li><p><strong>Active Development</strong>: Regularly updated with new features and model support.</p></li>
+<li><p><strong>Community-Driven</strong>: Benefits from community contributions and model sharing.</p></li>
 </ol>
 <p>To learn more about what Ollama is and how it works under the hood, you should see this short video from <a href="https://www.youtube.com/@technovangelist">Matt Williams</a>, one of the founders of Ollama:</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/90ozfdsQOKo" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
@@ -872,15 +726,15 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://ollama.com/install.sh <span class="kw">|</span> <span class="fu">sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>As a result, an API will run in the background on <code>127.0.0.1:11434</code>. From now on, we can run Ollama via the terminal. For starting, let’s verify the Ollama version, which will also tell us that it is correctly installed:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/png/install-ollama-rpi5.png" class="img-fluid"></p>
+<p><a href="images/png/install-ollama-rpi5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/png/install-ollama-rpi5.png" class="img-fluid"></a></p>
 <p>On the <a href="https://ollama.com/library">Ollama Library page</a>, we can find the models Ollama supports. For example, by filtering by <code>Most popular</code>, we can see Meta Llama, Google Gemma, Microsoft Phi, LLaVa, etc.</p>
 </section>
 <section id="meta-llama-3.2-1b3b" class="level3">
 <h3 class="anchored" data-anchor-id="meta-llama-3.2-1b3b">Meta Llama 3.2 1B/3B</h3>
-<p><img src="images/png/small_and_multimodal.png" class="img-fluid"></p>
+<p><a href="images/png/small_and_multimodal.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/png/small_and_multimodal.png" class="img-fluid"></a></p>
 <p>Let’s install and run our first small language model, <a href="https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/">Llama 3.2</a> 1B (and 3B). The Meta Llama 3.2 series comprises a set of multilingual generative language models available in 1 billion and 3 billion parameter sizes. These models are designed to process text input and generate text output. The instruction-tuned variants within this collection are specifically optimized for multilingual conversational applications, including tasks involving information retrieval and summarization with an agentic approach. When compared to many existing open-source and proprietary chat models, the Llama 3.2 instruction-tuned models demonstrate superior performance on widely-used industry benchmarks.</p>
 <p>The 1B and 3B models were pruned from the Llama 8B, and then logits from the 8B and 70B models were used as token-level targets (token-level distillation). Knowledge distillation was used to recover performance (they were trained with 9 trillion tokens). The 1B model has 1,24B, quantized to integer (Q8_0), and the 3B, 3.12B parameters, with a Q4_0 quantization, which ends with a size of 1.3 GB and 2GB, respectively. Its context window is 131,072 tokens.</p>
-<p><img src="images/jpeg/llama3_2.jpg" class="img-fluid"></p>
+<p><a href="images/jpeg/llama3_2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="images/jpeg/llama3_2.jpg" class="img-fluid"></a></p>
 <p><strong>Install and run the</strong> <strong>Model</strong></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run llama3.2:1b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Running the model with the command before, we should have the Ollama prompt available for us to input a question and start chatting with the LLM model; for example,</p>
@@ -888,21 +742,21 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <p>Almost immediately, we get the correct answer:</p>
 <p><code>The capital of France is Paris.</code></p>
 <p>Using the option <code>--verbose</code> when calling the model will generate several statistics about its performance (The model will be polling only the first time we run the command).</p>
-<p><img src="images/png/llama3_2_1b_performance.png" class="img-fluid"></p>
+<p><a href="images/png/llama3_2_1b_performance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="images/png/llama3_2_1b_performance.png" class="img-fluid"></a></p>
 <p>Each metric gives insights into how the model processes inputs and generates outputs. Here’s a breakdown of what each metric means:</p>
 <ul>
-<li><strong>Total Duration (2.620170326s)</strong> : This is the complete time taken from the start of the command to the completion of the response. It encompasses loading the model, processing the input prompt, and generating the response.</li>
-<li><strong>Load Duration (39.947908ms)</strong> : This duration indicates the time to load the model or necessary components into memory. If this value is minimal, it can suggest that the model was preloaded or that only a minimal setup was required.</li>
-<li><strong>Prompt Eval Count (32 tokens)</strong> : The number of tokens in the input prompt. In NLP, tokens are typically words or subwords, so this count includes all the tokens that the model evaluated to understand and respond to the query.</li>
-<li><strong>Prompt Eval Duration (1.644773s)</strong> : This measures the model’s time to evaluate or process the input prompt. It accounts for the bulk of the total duration, implying that understanding the query and preparing a response is the most time-consuming part of the process.</li>
-<li><strong>Prompt Eval Rate (19.46 tokens/s)</strong> : This rate indicates how quickly the model processes tokens from the input prompt. It reflects the model’s speed in terms of natural language comprehension.</li>
-<li><strong>Eval Count (8 token(s))</strong> : This is the number of tokens in the model’s response, which in this case was, “The capital of France is Paris.”</li>
-<li><strong>Eval Duration (889.941ms)</strong> : This is the time taken to generate the output based on the evaluated input. It’s much shorter than the prompt evaluation, suggesting that generating the response is less complex or computationally intensive than understanding the prompt.</li>
-<li><strong>Eval Rate (8.99 tokens/s)</strong> : Similar to the prompt eval rate, this indicates the speed at which the model generates output tokens. It’s a crucial metric for understanding the model’s efficiency in output generation.</li>
+<li><strong>Total Duration (2.620170326s)</strong>: This is the complete time taken from the start of the command to the completion of the response. It encompasses loading the model, processing the input prompt, and generating the response.</li>
+<li><strong>Load Duration (39.947908ms)</strong>: This duration indicates the time to load the model or necessary components into memory. If this value is minimal, it can suggest that the model was preloaded or that only a minimal setup was required.</li>
+<li><strong>Prompt Eval Count (32 tokens)</strong>: The number of tokens in the input prompt. In NLP, tokens are typically words or subwords, so this count includes all the tokens that the model evaluated to understand and respond to the query.</li>
+<li><strong>Prompt Eval Duration (1.644773s)</strong>: This measures the model’s time to evaluate or process the input prompt. It accounts for the bulk of the total duration, implying that understanding the query and preparing a response is the most time-consuming part of the process.</li>
+<li><strong>Prompt Eval Rate (19.46 tokens/s)</strong>: This rate indicates how quickly the model processes tokens from the input prompt. It reflects the model’s speed in terms of natural language comprehension.</li>
+<li><strong>Eval Count (8 token(s))</strong>: This is the number of tokens in the model’s response, which in this case was, “The capital of France is Paris.”</li>
+<li><strong>Eval Duration (889.941ms)</strong>: This is the time taken to generate the output based on the evaluated input. It’s much shorter than the prompt evaluation, suggesting that generating the response is less complex or computationally intensive than understanding the prompt.</li>
+<li><strong>Eval Rate (8.99 tokens/s)</strong>: Similar to the prompt eval rate, this indicates the speed at which the model generates output tokens. It’s a crucial metric for understanding the model’s efficiency in output generation.</li>
 </ul>
 <p>This detailed breakdown can help understand the computational demands and performance characteristics of running SLMs like Llama on edge devices like the Raspberry Pi 5. It shows that while prompt evaluation is more time-consuming, the actual generation of responses is relatively quicker. This analysis is crucial for optimizing performance and diagnosing potential bottlenecks in real-time applications.</p>
 <p>Loading and running the 3B model, we can see the difference in performance for the same prompt;</p>
-<p><img src="images/png/llama3_2_3b_performance.png" class="img-fluid"></p>
+<p><a href="images/png/llama3_2_3b_performance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="images/png/llama3_2_3b_performance.png" class="img-fluid"></a></p>
 <p>The eval rate is lower, 5.3 tokens/s versus 9 tokens/s with the smaller model.</p>
 <p>When question about</p>
 <p><code>&gt;&gt;&gt; What is the distance between Paris and Santiago, Chile?</code></p>
@@ -911,13 +765,13 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <p><code>&gt;&gt;&gt; what is the latitude and longitude of Paris?</code></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> latitude and longitude of Paris are 48.8567° N <span class="er">(</span><span class="ex">48°55</span><span class="st">' </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">42" N) and 2.3510° E (2°22'</span> 8<span class="st">" E), respectively.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/png/paris-lat-lon.png" class="img-fluid"></p>
+<p><a href="images/png/paris-lat-lon.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="images/png/paris-lat-lon.png" class="img-fluid"></a></p>
 <p>Both 1B and 3B models gave correct answers.</p>
 </section>
 <section id="google-gemma-2-2b" class="level3">
 <h3 class="anchored" data-anchor-id="google-gemma-2-2b">Google Gemma 2 2B</h3>
 <p>Let’s install <a href="https://ollama.com/library/gemma2:2b">Gemma 2</a>, a high-performing and efficient model available in three sizes: 2B, 9B, and 27B. We will install <a href="https://huggingface.co/collections/google/gemma-2-2b-release-66a20f3796a2ff2a7c76f98f"><strong>Gemma 2 2B</strong></a>, a lightweight model trained with 2 trillion tokens that produces outsized results by learning from larger models through distillation. The model has 2.6 billion parameters and a Q4_0 quantization, which ends with a size of 1.6 GB. Its context window is 8,192 tokens.</p>
-<p><img src="images/png/gemma_2.png" class="img-fluid"></p>
+<p><a href="images/png/gemma_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="images/png/gemma_2.png" class="img-fluid"></a></p>
 <p><strong>Install and run the</strong> <strong>Model</strong></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ollama</span> run gemma2:2b <span class="at">--verbose</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Running the model with the command before, we should have the Ollama prompt available for us to input a question and start chatting with the LLM model; for example,</p>
@@ -925,7 +779,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <p>Almost immediately, we get the correct answer:</p>
 <p><code>The capital of France is **Paris**. 🗼</code></p>
 <p>And it’ statistics.</p>
-<p><img src="images/png/gemma.png" class="img-fluid"></p>
+<p><a href="images/png/gemma.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="images/png/gemma.png" class="img-fluid"></a></p>
 <p>We can see that Gemma 2:2B has around the same performance as Lama 3.2:3B, but having less parameters.</p>
 <p><strong>Other examples:</strong></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> What <span class="ex">is</span> the distance between Paris and Santiago, Chile<span class="pp">?</span></span>
@@ -972,7 +826,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The answer was very “verbose”, let’s specify a better prompt:</p>
-<p><img src="images/png/paris-2.png" class="img-fluid"></p>
+<p><a href="images/png/paris-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="images/png/paris-2.png" class="img-fluid"></a></p>
 <p>In this case, the answer was still longer than we expected, with an eval rate of 2.25 tokens/s, more than double that of Gemma and Llama.</p>
 <blockquote class="blockquote">
 <p>Choosing the most appropriate prompt is one of the most important skills to be used with LLMs, no matter its size.</p>
@@ -1006,25 +860,25 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> OLLAMA</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> OLLAMA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s download a 640x320 image from the internet, for example (Wikipedia: <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg/640px-La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg">Paris, France)</a>:</p>
-<p><img src="images/jpeg/paris.jpg" class="img-fluid"></p>
+<p><a href="images/jpeg/paris.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="images/jpeg/paris.jpg" class="img-fluid"></a></p>
 <p>Using FileZilla, for example, let’s upload the image to the OLLAMA folder at the Raspi-5 and name it <code>image_test_1.jpg</code>. We should have the whole image path (we can use <code>pwd</code> to get it).</p>
 <p><code>/home/mjrovai/Documents/OLLAMA/image_test_1.jpg</code></p>
 <p>If you use a desktop, you can copy the image path by clicking the image with the mouse’s right button.</p>
-<p><img src="images/png/image_test-path.png" class="img-fluid"></p>
+<p><a href="images/png/image_test-path.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="images/png/image_test-path.png" class="img-fluid"></a></p>
 <p>Let’s enter with this prompt:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> Describe <span class="ex">the</span> image /home/mjrovai/Documents/OLLAMA/image_test_1.jpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The result was great, but the overall latency was significant; almost 4 minutes to perform the inference.</p>
-<p><img src="images/png/paris-infer-1.png" class="img-fluid"></p>
+<p><a href="images/png/paris-infer-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="images/png/paris-infer-1.png" class="img-fluid"></a></p>
 </section>
 <section id="inspecting-local-resources" class="level3">
 <h3 class="anchored" data-anchor-id="inspecting-local-resources">Inspecting local resources</h3>
 <p>Using htop, we can monitor the resources running on our device.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">htop</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>During the time that the model is running, we can inspect the resources:</p>
-<p><img src="images/png/htop.png" class="img-fluid"></p>
+<p><a href="images/png/htop.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="images/png/htop.png" class="img-fluid"></a></p>
 <p>All four CPUs run at almost 100% of their capacity, and the memory used with the model loaded is <code>3.24GB</code>. Exiting Ollama, the memory goes down to around <code>377MB</code> (with no desktop).</p>
 <p>It is also essential to monitor the temperature. When running the Raspberry with a desktop, you can have the temperature shown on the taskbar:</p>
-<p><img src="images/png/resourses-temp.png" class="img-fluid"></p>
+<p><a href="images/png/resourses-temp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="images/png/resourses-temp.png" class="img-fluid"></a></p>
 <p>If you are “headless”, the temperature can be monitored with the command:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">vcgencmd</span> measure_temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you are doing nothing, the temperature is around <code>50°C</code> for CPUs running at 1%. During inference, with the CPUs at 100%, the temperature can rise to almost <code>70°C</code>. This is OK and means the active cooler is working, keeping the temperature below 80°C / 85°C (its limit).</p>
@@ -1040,14 +894,14 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <p>In the terminal, run the command:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ollama</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We will need a text editor or an IDE to create a Python script. If you run the Raspberry OS on a desktop, several options, such as Thonny and Geany, have already been installed by default (accessed by <code>[Menu][Programming]</code>). You can download other IDEs, such as Visual Studio Code, from <code>[Menu][Recommended Software]</code>. When the window pops up, go to <code>[Programming]</code>, select the option of your choice, and press <code>[Apply]</code>.</p>
-<p><img src="images/png/menu.png" class="img-fluid"></p>
+<p><a href="images/png/menu.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="images/png/menu.png" class="img-fluid"></a></p>
 <p>If you prefer using Jupyter Notebook for development:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install jupyter</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> notebook <span class="at">--generate-config</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To run Jupyter Notebook, run the command (change the IP address for yours):</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> notebook <span class="at">--ip</span><span class="op">=</span>192.168.4.209 <span class="at">--no-browser</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>On the terminal, you can see the local URL address to open the notebook:</p>
-<p><img src="images/png/jupyter.png" class="img-fluid"></p>
+<p><a href="images/png/jupyter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="images/png/jupyter.png" class="img-fluid"></a></p>
 <p>We can access it from another computer by entering the Raspberry Pi’s IP address and the provided token in a web browser (we should copy it from the terminal).</p>
 <p>In our working directory in the Raspi, we will create a new Python 3 notebook.</p>
 <p>Let’s enter with a very simple script to verify the installed models:</p>
@@ -1083,22 +937,22 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 1908757000, 'eval_count': 14, 'eval_duration': 2475410000}</code></pre>
 <p>As we can see, several pieces of information are generated, such as:</p>
 <ul>
-<li><strong>response</strong> : the main output text generated by the model in response to our prompt.
+<li><strong>response</strong>: the main output text generated by the model in response to our prompt.
 <ul>
 <li><code>The capital of France is **Paris**. 🇫🇷</code></li>
 </ul></li>
-<li><strong>context</strong> : the token IDs representing the input and context used by the model. Tokens are numerical representations of text used for processing by the language model.
+<li><strong>context</strong>: the token IDs representing the input and context used by the model. Tokens are numerical representations of text used for processing by the language model.
 <ul>
 <li><code>[106, 1645, 108, 1841, 603, 573, 6037, 576, 6081, 235336, 107, 108,</code> <code>106, 2516, 108, 651, 6037, 576, 6081, 603, 5231, 29437, 168428,</code> <code>235248, 244304, 241035, 235248, 108]</code></li>
 </ul></li>
 </ul>
 <p>The Performance Metrics:</p>
 <ul>
-<li><strong>total_duration</strong> : The total time taken for the operation in nanoseconds. In this case, approximately 24.26 seconds.</li>
-<li><strong>load_duration</strong> : The time taken to load the model or components in nanoseconds. About 19.83 seconds.</li>
-<li><strong>prompt_eval_duration</strong> : The time taken to evaluate the prompt in nanoseconds. Around 16 nanoseconds.</li>
-<li><strong>eval_count</strong> : The number of tokens evaluated during the generation. Here, 14 tokens.</li>
-<li><strong>eval_duration</strong> : The time taken for the model to generate the response in nanoseconds. Approximately 2.5 seconds.</li>
+<li><strong>total_duration</strong>: The total time taken for the operation in nanoseconds. In this case, approximately 24.26 seconds.</li>
+<li><strong>load_duration</strong>: The time taken to load the model or components in nanoseconds. About 19.83 seconds.</li>
+<li><strong>prompt_eval_duration</strong>: The time taken to evaluate the prompt in nanoseconds. Around 16 nanoseconds.</li>
+<li><strong>eval_count</strong>: The number of tokens evaluated during the generation. Here, 14 tokens.</li>
+<li><strong>eval_duration</strong>: The time taken for the model to generate the response in nanoseconds. Approximately 2.5 seconds.</li>
 </ul>
 <p>But, what we want is the plain ‘response’ and, perhaps for analysis, the total duration of the inference, so let’s change the code to extract it from the dictionary:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span>res[<span class="st">'response'</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -1199,7 +1053,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <section id="lets-create-a-project." class="level4">
 <h4 class="anchored" data-anchor-id="lets-create-a-project.">Let’s create a project.</h4>
 <p>We want to create an <em>app</em> where the user enters a country’s name and gets, as an output, the distance in km from the capital city of such a country and the app’s location (for simplicity, We will use Santiago, Chile, as the app location).</p>
-<p><img src="images/png/block-fc-proj.png" class="img-fluid"></p>
+<p><a href="images/png/block-fc-proj.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="images/png/block-fc-proj.png" class="img-fluid"></a></p>
 <p>Once the user enters a country name, the model will return the name of its capital city (as a string) and the latitude and longitude of such city (in float). Using those coordinates, we can use a simple Python library (<a href="https://pypi.org/project/haversine/">haversine</a>) to calculate the distance between those 2 points.</p>
 <p>The idea of this project is to demonstrate a combination of language model interaction, structured data handling with Pydantic, and geospatial calculations using the Haversine formula (traditional computing).</p>
 <p>First, let us install some libraries. Besides <em>Haversine</em>, the main one is the <a href="https://github.com/openai/openai-python">OpenAI Python library</a>, which provides convenient access to the OpenAI REST API from any Python 3.7+ application. The other one is <a href="https://docs.pydantic.dev/latest/">Pydantic</a> (and instructor), a robust data validation and settings management library engineered by Python to enhance the robustness and reliability of our codebase. In short, <em>Pydantic</em> will help ensure that our model’s response will always be consistent.</p>
@@ -1219,11 +1073,11 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, Field</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> instructor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><strong>sys</strong> : Provides access to system-specific parameters and functions. It’s used to get command-line arguments.</li>
-<li><strong>haversine</strong> : A function from the haversine library that calculates the distance between two geographic points using the Haversine formula.</li>
-<li><strong>openAI</strong> : A module for interacting with the OpenAI API (although it’s used in conjunction with a local setup, Ollama). Everything is off-line here.</li>
-<li><strong>pydantic</strong> : Provides data validation and settings management using Python-type annotations. It’s used to define the structure of expected response data.</li>
-<li><strong>instructor</strong> : A module is used to patch the OpenAI client to work in a specific mode (likely related to structured data handling).</li>
+<li><strong>sys</strong>: Provides access to system-specific parameters and functions. It’s used to get command-line arguments.</li>
+<li><strong>haversine</strong>: A function from the haversine library that calculates the distance between two geographic points using the Haversine formula.</li>
+<li><strong>openAI</strong>: A module for interacting with the OpenAI API (although it’s used in conjunction with a local setup, Ollama). Everything is off-line here.</li>
+<li><strong>pydantic</strong>: Provides data validation and settings management using Python-type annotations. It’s used to define the structure of expected response data.</li>
+<li><strong>instructor</strong>: A module is used to patch the OpenAI client to work in a specific mode (likely related to structured data handling).</li>
 </ul>
 </section>
 <section id="defining-input-and-model" class="level3">
@@ -1233,12 +1087,12 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>mylat <span class="op">=</span> <span class="op">-</span><span class="fl">33.33</span>              <span class="co"># Latitude of Santiago de Chile</span></span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>mylon <span class="op">=</span> <span class="op">-</span><span class="fl">70.51</span>              <span class="co"># Longitude of Santiago de Chile</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><strong>country</strong> : On a Python script, getting the country name from command-line arguments is possible. On a Jupyter notebook, we can enter its name, for example,
+<li><strong>country</strong>: On a Python script, getting the country name from command-line arguments is possible. On a Jupyter notebook, we can enter its name, for example,
 <ul>
 <li><code>country = "France"</code></li>
 </ul></li>
-<li><strong>MODEL</strong> : Specifies the model being used, which is, in this example, the phi3.5.</li>
-<li><strong>mylat</strong> <strong>and</strong> <strong>mylon</strong> : Coordinates of Santiago de Chile, used as the starting point for the distance calculation.</li>
+<li><strong>MODEL</strong>: Specifies the model being used, which is, in this example, the phi3.5.</li>
+<li><strong>mylat</strong> <strong>and</strong> <strong>mylon</strong>: Coordinates of Santiago de Chile, used as the starting point for the distance calculation.</li>
 </ul>
 </section>
 <section id="defining-the-response-data-structure" class="level3">
@@ -1248,7 +1102,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    lat: <span class="bu">float</span> <span class="op">=</span> Field(..., description<span class="op">=</span><span class="st">"Decimal Latitude of the city"</span>)</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    lon: <span class="bu">float</span> <span class="op">=</span> Field(..., description<span class="op">=</span><span class="st">"Decimal Longitude of the city"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><strong>CityCoord</strong> : A Pydantic model that defines the expected structure of the response from the LLM. It expects three fields: city (name of the city), lat (latitude), and lon (longitude).</li>
+<li><strong>CityCoord</strong>: A Pydantic model that defines the expected structure of the response from the LLM. It expects three fields: city (name of the city), lat (latitude), and lon (longitude).</li>
 </ul>
 </section>
 <section id="setting-up-the-openai-client" class="level3">
@@ -1261,8 +1115,8 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    mode<span class="op">=</span>instructor.Mode.JSON,                 <span class="co"># Mode for structured JSON output</span></span>
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><strong>OpenAI</strong> : This setup initializes an OpenAI client with a local base URL and an API key (ollama). It uses a local server.</li>
-<li><strong>instructor.patch</strong> : Patches the OpenAI client to work in JSON mode, enabling structured output that matches the Pydantic model.</li>
+<li><strong>OpenAI</strong>: This setup initializes an OpenAI client with a local base URL and an API key (ollama). It uses a local server.</li>
+<li><strong>instructor.patch</strong>: Patches the OpenAI client to work in JSON mode, enabling structured output that matches the Pydantic model.</li>
 </ul>
 </section>
 <section id="generating-the-response" class="level3">
@@ -1280,11 +1134,11 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    max_retries<span class="op">=</span><span class="dv">10</span></span>
 <span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><strong>client.chat.completions.create</strong> : Calls the LLM to generate a response.</li>
-<li><strong>model</strong> : Specifies the model to use (llava-phi3).</li>
-<li><strong>messages</strong> : Contains the prompt for the LLM, asking for the latitude and longitude of the capital city of the specified country.</li>
-<li><strong>response_model</strong> : Indicates that the response should conform to the CityCoord model.</li>
-<li><strong>max_retries</strong> : The maximum number of retry attempts if the request fails.</li>
+<li><strong>client.chat.completions.create</strong>: Calls the LLM to generate a response.</li>
+<li><strong>model</strong>: Specifies the model to use (llava-phi3).</li>
+<li><strong>messages</strong>: Contains the prompt for the LLM, asking for the latitude and longitude of the capital city of the specified country.</li>
+<li><strong>response_model</strong>: Indicates that the response should conform to the CityCoord model.</li>
+<li><strong>max_retries</strong>: The maximum number of retry attempts if the request fails.</li>
 </ul>
 </section>
 <section id="calculating-the-distance" class="level3">
@@ -1293,12 +1147,12 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Santiago de Chile is about </span><span class="sc">{</span><span class="bu">int</span>(<span class="bu">round</span>(distance, <span class="op">-</span><span class="dv">1</span>))<span class="sc">:,}</span><span class="ss"> </span><span class="ch">\</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ss">        kilometers away from </span><span class="sc">{</span>resp<span class="sc">.</span>city<span class="sc">}</span><span class="ss">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><strong>haversine</strong> : Calculates the distance between Santiago de Chile and the capital city returned by the LLM using their respective coordinates.</li>
-<li><strong>(mylat, mylon)</strong> : Coordinates of Santiago de Chile.</li>
-<li><strong>resp.city</strong> : Name of the country’s capital</li>
-<li><strong>(resp.lat, resp.lon)</strong> : Coordinates of the capital city are provided by the LLM response.</li>
-<li><strong>unit=‘km’</strong> : Specifies that the distance should be calculated in kilometers.</li>
-<li><strong>print</strong> : Outputs the distance, rounded to the nearest 10 kilometers, with thousands of separators for readability.</li>
+<li><strong>haversine</strong>: Calculates the distance between Santiago de Chile and the capital city returned by the LLM using their respective coordinates.</li>
+<li><strong>(mylat, mylon)</strong>: Coordinates of Santiago de Chile.</li>
+<li><strong>resp.city</strong>: Name of the country’s capital</li>
+<li><strong>(resp.lat, resp.lon)</strong>: Coordinates of the capital city are provided by the LLM response.</li>
+<li><strong>unit=‘km’</strong>: Specifies that the distance should be calculated in kilometers.</li>
+<li><strong>print</strong>: Outputs the distance, rounded to the nearest 10 kilometers, with thousands of separators for readability.</li>
 </ul>
 <p><strong>Running the code</strong></p>
 <p>If we enter different countries, for example, France, Colombia, and the United States, We can note that we always receive the same structured information:</p>
@@ -1306,9 +1160,9 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Santiago</span> de Chile is about 4,250 kilometers away from Bogotá.</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Santiago</span> de Chile is about 11,630 kilometers away from Paris.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you run the code as a script, the result will be printed on the terminal:</p>
-<p><img src="images/png/script-fc.png" class="img-fluid"></p>
+<p><a href="images/png/script-fc.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="images/png/script-fc.png" class="img-fluid"></a></p>
 <p>And the calculations are pretty good!</p>
-<p><img src="images/png/calc_real.png" class="img-fluid"></p>
+<p><a href="images/png/calc_real.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="images/png/calc_real.png" class="img-fluid"></a></p>
 <blockquote class="blockquote">
 <p>In the <a href="https://github.com/Mjrovai/EdgeML-with-Raspberry-Pi/blob/main/OLLAMA_SLMs/20-Ollama_Function_Calling.ipynb">20-Ollama_Function_Calling</a> notebook, it is possible to find experiments with all models installed.</p>
 </blockquote>
@@ -1316,7 +1170,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <section id="adding-images" class="level3">
 <h3 class="anchored" data-anchor-id="adding-images">Adding images</h3>
 <p>Now it is time to wrap up everything so far! Let’s modify the script so that instead of entering the country name (as a text), the user enters an image, and the application (based on SLM) returns the city in the image and its geographic location. With those data, we can calculate the distance as before.</p>
-<p><img src="images/png/block-2.png" class="img-fluid"></p>
+<p><a href="images/png/block-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="images/png/block-2.png" class="img-fluid"></a></p>
 <p>For simplicity, we will implement this new code in two steps. First, the LLM will analyze the image and create a description (text). This text will be passed on to another instance, where the model will extract the information needed to pass along.</p>
 <p>We will start importing the libraries</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
@@ -1347,7 +1201,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span>
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.title("Image")</span></span>
 <span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="images/jpeg/image_test_3.jpg" class="img-fluid"></p>
+<p><a href="images/jpeg/image_test_3.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="images/jpeg/image_test_3.jpg" class="img-fluid"></a></p>
 <p>Now, let’s define a function that will receive the image and will <code>return the decimal latitude and decimal longitude of the city in the image, its name, and what country it is located</code></p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> image_description(img_path):</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(img_path, <span class="st">'rb'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
@@ -1438,9 +1292,9 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <p>Let’s now download the script <code>calc_distance_image.py</code> from the <a href="">GitHub</a> and run it on the terminal with the command:</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> calc_distance_image.py /home/mjrovai/Documents/OLLAMA/image_test_3.jpg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Enter with the Machu Picchu image full patch as an argument. We will get the same previous result.</p>
-<p><img src="images/png/app-machu-picchu.png" class="img-fluid"></p>
+<p><a href="images/png/app-machu-picchu.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="images/png/app-machu-picchu.png" class="img-fluid"></a></p>
 <p><em>How</em> about Paris?</p>
-<p><img src="images/png/paris-app.png" class="img-fluid"></p>
+<p><a href="images/png/paris-app.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="images/png/paris-app.png" class="img-fluid"></a></p>
 <p>Of course, there are many ways to optimize the code used here. Still, the idea is to explore the considerable potential of <em>function calling</em> with SLMs at the edge, allowing those models to integrate with external functions or APIs. Going beyond text generation, SLMs can access real-time data, automate tasks, and interact with various systems.</p>
 </section>
 </section>
@@ -1459,7 +1313,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <section id="rag-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="rag-implementation">RAG Implementation</h2>
 <p>In a basic interaction between a user and a language model, the user asks a question, which is sent as a prompt to the model. The model generates a response based solely on its pre-trained knowledge. In a RAG process, there’s an additional step between the user’s question and the model’s response. The user’s question triggers a retrieval process from a knowledge base.</p>
-<p><img src="images/png/rag-1.png" class="img-fluid"></p>
+<p><a href="images/png/rag-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img src="images/png/rag-1.png" class="img-fluid"></a></p>
 <section id="a-simple-rag-project" class="level3">
 <h3 class="anchored" data-anchor-id="a-simple-rag-project">A simple RAG project</h3>
 <p>Here are the steps to implement a basic Retrieval Augmented Generation (RAG):</p>
@@ -1467,7 +1321,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <li><p><strong>Determine the type of documents you’ll be using:</strong> The best types are documents from which we can get clean and unobscured text. PDFs can be problematic because they are designed for printing, not for extracting sensible text. To work with PDFs, we should get the source document or use tools to handle it.</p></li>
 <li><p><strong>Chunk the text:</strong> We can’t store the text as one long stream because of context size limitations and the potential for confusion. Chunking involves splitting the text into smaller pieces. Chunk text has many ways, such as character count, tokens, words, paragraphs, or sections. It is also possible to overlap chunks.</p></li>
 <li><p><strong>Create embeddings:</strong> Embeddings are numerical representations of text that capture semantic meaning. We create embeddings by passing each chunk of text through a particular embedding model. The model outputs a vector, the length of which depends on the embedding model used. We should pull one (or more) <a href="https://ollama.com/blog/embedding-models">embedding models</a> from Ollama, to perform this task. Here are some examples of embedding models available at Ollama.</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Model</th>
@@ -1552,7 +1406,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>    documents<span class="op">=</span>[d]</span>
 <span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now that we have our “Knowledge Base” created, we can start making queries, retrieving data from it:</p>
-<p><img src="images/png/rag-2-2.png" class="img-fluid"></p>
+<p><a href="images/png/rag-2-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img src="images/png/rag-2-2.png" class="img-fluid"></a></p>
 <p><strong>User Query:</strong> The process begins when a user asks a question, such as “How many bees are in a colony? Who lays eggs, and how much? How about common pests and diseases?”</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"How many bees are in a colony? Who lays eggs and how much? How about</span><span class="ch">\</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="st">          common pests and diseases?"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1650,7 +1504,7 @@ gtag('config', 'G-M21L0CBCVN', { 'anonymize_ip': true});
 <blockquote class="blockquote">
 <p>In the vast landscape of artificial intelligence (AI), one of the most intriguing journeys has been the evolution of AI on the edge. This journey has taken us from classic machine vision to the realms of discriminative AI, enhancive AI, and now, the groundbreaking frontier of generative AI. Each step has brought us closer to a future where intelligent systems seamlessly integrate with our daily lives, offering an immersive experience of not just perception but also creation at the palm of our hand.</p>
 </blockquote>
-<p><img src="images/jpeg/halo.jpg" class="img-fluid"></p>
+<p><a href="images/jpeg/halo.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img src="images/jpeg/halo.jpg" class="img-fluid"></a></p>
 </section>
 </section>
 <section id="conclusion" class="level2">
@@ -1891,18 +1745,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1934,7 +1777,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1942,7 +1807,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -2247,6 +2112,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

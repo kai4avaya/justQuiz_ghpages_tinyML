@@ -1,0 +1,239 @@
+{
+  "index.qmd": {
+    "index.html": "fbfe5f5b"
+  },
+  "contents/dedication.qmd": {
+    "dedication.html": "4650c2c4"
+  },
+  "contents/acknowledgements/acknowledgements.qmd": {
+    "acknowledgements.html": "91621002"
+  },
+  "contents/contributors.qmd": {
+    "contributors.html": "cf033e9f"
+  },
+  "contents/copyright.qmd": {
+    "copyright.html": "504aaa17"
+  },
+  "contents/about.qmd": {
+    "about.html": "cd984b03"
+  },
+  "contents/introduction/introduction.qmd": {
+    "introduction.html": "6681ffc5"
+  },
+  "contents/ml_systems/ml_systems.qmd": {
+    "ml_systems.html": "498a71b5"
+  },
+  "contents/dl_primer/dl_primer.qmd": {
+    "dl_primer.html": "9de4272d"
+  },
+  "contents/workflow/workflow.qmd": {
+    "workflow.html": "78556b39"
+  },
+  "contents/data_engineering/data_engineering.qmd": {
+    "data_engineering.html": "d037f9ad"
+  },
+  "contents/frameworks/frameworks.qmd": {
+    "frameworks.html": "7166eda2"
+  },
+  "contents/training/training.qmd": {
+    "training.html": "844e10e5"
+  },
+  "contents/efficient_ai/efficient_ai.qmd": {
+    "efficient_ai.html": "bf033c30"
+  },
+  "contents/optimizations/optimizations.qmd": {
+    "optimizations.html": "e807f527"
+  },
+  "contents/hw_acceleration/hw_acceleration.qmd": {
+    "hw_acceleration.html": "af504375"
+  },
+  "contents/benchmarking/benchmarking.qmd": {
+    "benchmarking.html": "4e183f36"
+  },
+  "contents/ondevice_learning/ondevice_learning.qmd": {
+    "ondevice_learning.html": "88d9e74d"
+  },
+  "contents/ops/ops.qmd": {
+    "ops.html": "dbd2937d"
+  },
+  "contents/privacy_security/privacy_security.qmd": {
+    "privacy_security.html": "2c357db8"
+  },
+  "contents/responsible_ai/responsible_ai.qmd": {
+    "responsible_ai.html": "2bba2c8f"
+  },
+  "contents/sustainable_ai/sustainable_ai.qmd": {
+    "sustainable_ai.html": "239c1bc7"
+  },
+  "contents/robust_ai/robust_ai.qmd": {
+    "robust_ai.html": "82025a17"
+  },
+  "contents/generative_ai/generative_ai.qmd": {
+    "generative_ai.html": "95c39fa7"
+  },
+  "contents/ai_for_good/ai_for_good.qmd": {
+    "ai_for_good.html": "88dfe324"
+  },
+  "contents/conclusion/conclusion.qmd": {
+    "conclusion.html": "6af5dba1"
+  },
+  "contents/labs/labs.qmd": {
+    "labs.html": "18eaf408"
+  },
+  "contents/labs/getting_started.qmd": {
+    "getting_started.html": "b47829e0"
+  },
+  "contents/labs/arduino/nicla_vision/nicla_vision.qmd": {
+    "nicla_vision.html": "dcd0aa0f"
+  },
+  "contents/labs/arduino/nicla_vision/setup/setup.qmd": {
+    "setup.html": "aa91be5a"
+  },
+  "contents/labs/arduino/nicla_vision/image_classification/image_classification.qmd": {
+    "image_classification.html": "66a27841"
+  },
+  "contents/labs/arduino/nicla_vision/object_detection/object_detection.qmd": {
+    "object_detection.html": "6d545ba9"
+  },
+  "contents/labs/arduino/nicla_vision/kws/kws.qmd": {
+    "kws.html": "60150919"
+  },
+  "contents/labs/arduino/nicla_vision/motion_classification/motion_classification.qmd": {
+    "motion_classification.html": "1ad5e70d"
+  },
+  "contents/labs/seeed/xiao_esp32s3/xiao_esp32s3.qmd": {
+    "xiao_esp32s3.html": "9136af29"
+  },
+  "contents/labs/seeed/xiao_esp32s3/setup/setup.qmd": {
+    "setup.html": "3da1ac61"
+  },
+  "contents/labs/seeed/xiao_esp32s3/image_classification/image_classification.qmd": {
+    "image_classification.html": "fdf396c5"
+  },
+  "contents/labs/seeed/xiao_esp32s3/object_detection/object_detection.qmd": {
+    "object_detection.html": "0ad23a8e"
+  },
+  "contents/labs/seeed/xiao_esp32s3/kws/kws.qmd": {
+    "kws.html": "8f14fc5e"
+  },
+  "contents/labs/seeed/xiao_esp32s3/motion_classification/motion_classification.qmd": {
+    "motion_classification.html": "8553f023"
+  },
+  "contents/labs/raspi/raspi.qmd": {
+    "raspi.html": "e5deb3e3"
+  },
+  "contents/labs/raspi/setup/setup.qmd": {
+    "setup.html": "5f5427e1"
+  },
+  "contents/labs/raspi/image_classification/image_classification.qmd": {
+    "image_classification.html": "23ee5e89"
+  },
+  "contents/labs/raspi/object_detection/object_detection.qmd": {
+    "object_detection.html": "f5c31abd"
+  },
+  "contents/labs/raspi/llm/llm.qmd": {
+    "llm.html": "2ca76770"
+  },
+  "contents/labs/shared/shared.qmd": {
+    "shared.html": "25ae355d"
+  },
+  "contents/labs/shared/kws_feature_eng/kws_feature_eng.qmd": {
+    "kws_feature_eng.html": "c53e76f5"
+  },
+  "contents/labs/shared/dsp_spectral_features_block/dsp_spectral_features_block.qmd": {
+    "dsp_spectral_features_block.html": "0eff606f"
+  },
+  "references.qmd": {
+    "references.html": "fc72e4d5"
+  },
+  "contents/tools.qmd": {
+    "tools.html": "ac099b93"
+  },
+  "contents/zoo_datasets.qmd": {
+    "zoo_datasets.html": "561c540a"
+  },
+  "contents/zoo_models.qmd": {
+    "zoo_models.html": "56ad8410"
+  },
+  "contents/learning_resources.qmd": {
+    "learning_resources.html": "01754268"
+  },
+  "contents/community.qmd": {
+    "community.html": "9fafd234"
+  },
+  "contents/case_studies.qmd": {
+    "case_studies.html": "00665c4a"
+  },
+  "contents/core/acknowledgements/acknowledgements.qmd": {
+    "acknowledgements.html": "0b031b88"
+  },
+  "contents/core/introduction/introduction.qmd": {
+    "introduction.html": "52769e1b"
+  },
+  "contents/core/ml_systems/ml_systems.qmd": {
+    "ml_systems.html": "989cc114"
+  },
+  "contents/core/dl_primer/dl_primer.qmd": {
+    "dl_primer.html": "673fae11"
+  },
+  "contents/core/workflow/workflow.qmd": {
+    "workflow.html": "126cc142"
+  },
+  "contents/core/data_engineering/data_engineering.qmd": {
+    "data_engineering.html": "ac38605a"
+  },
+  "contents/core/frameworks/frameworks.qmd": {
+    "frameworks.html": "df8db8b9"
+  },
+  "contents/core/training/training.qmd": {
+    "training.html": "c7d4efc6"
+  },
+  "contents/core/efficient_ai/efficient_ai.qmd": {
+    "efficient_ai.html": "0199bba9"
+  },
+  "contents/core/optimizations/optimizations.qmd": {
+    "optimizations.html": "2b8fd0f8"
+  },
+  "contents/core/hw_acceleration/hw_acceleration.qmd": {
+    "hw_acceleration.html": "08228a87"
+  },
+  "contents/core/benchmarking/benchmarking.qmd": {
+    "benchmarking.html": "eb7d7683"
+  },
+  "contents/core/ondevice_learning/ondevice_learning.qmd": {
+    "ondevice_learning.html": "0a26a988"
+  },
+  "contents/core/ops/ops.qmd": {
+    "ops.html": "15095fdf"
+  },
+  "contents/core/privacy_security/privacy_security.qmd": {
+    "privacy_security.html": "bf8a2110"
+  },
+  "contents/core/responsible_ai/responsible_ai.qmd": {
+    "responsible_ai.html": "85043175"
+  },
+  "contents/core/sustainable_ai/sustainable_ai.qmd": {
+    "sustainable_ai.html": "0a7619e1"
+  },
+  "contents/core/robust_ai/robust_ai.qmd": {
+    "robust_ai.html": "bd5162df"
+  },
+  "contents/core/generative_ai/generative_ai.qmd": {
+    "generative_ai.html": "3d4a8a64"
+  },
+  "contents/core/ai_for_good/ai_for_good.qmd": {
+    "ai_for_good.html": "1683849b"
+  },
+  "contents/core/conclusion/conclusion.qmd": {
+    "conclusion.html": "231134c2"
+  },
+  "contents/labs/overview.qmd": {
+    "overview.html": "b33c952f"
+  },
+  "contents/core/about/about.qmd": {
+    "about.html": "0fb0b14f"
+  },
+  "contents/ai/socratiq.qmd": {
+    "socratiq.html": "2c02b512"
+  }
+}
